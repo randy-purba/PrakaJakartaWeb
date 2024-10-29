@@ -1,5 +1,11 @@
 <?php
   session_start();
+
+  if (!isset($_SESSION['logged_in'])) {
+    header("Location: login.php");
+    exit();
+  }
+  
   function login() {
     $url = 'https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/login';
     $data = array('username' => $_POST["name"], 'password' => $_POST["password"]);
@@ -32,6 +38,7 @@
   if(isset($_POST['submitLogin'])){
     login();
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +49,7 @@
   <link rel="stylesheet" href="css/master.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
-  <title>Login | Ayo-Jo</title>
+  <title>Login | Praka-Jakarta</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>

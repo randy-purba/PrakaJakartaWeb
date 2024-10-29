@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
-    <title>Dashboard | Ayo-Jo</title>
+    <title>Dashboard | Praka-Jakarta</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
@@ -41,7 +41,7 @@
     <div class="right-content">
       <div class="header">
         <div class="header-link">
-          <h6><?php echo $_SESSION["name"];?>&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+          <h6><?php echo $_SESSION["name"] ?? null;?>&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</h6>
           <h6><a href="action.php?logout=true" style="color: #43425D; text-decoration: none;">Logout</a></h6>
         </div>
       </div>
@@ -50,17 +50,17 @@
         <div class="boxs">
           <div class="box">
             <h6>total marker hari ini</h6>
-            <h1><?php echo $data3['data'];?></h1>
+            <h1><?php echo $data3['data'] ?? null;?></h1>
             <img src="img/chart_surveyor.svg" alt="Total Marker Hari ini">
           </div>
           <div class="box">
             <h6>total surveyor</h6>
-            <h1><?php echo $data['data'];?></h1>
+            <h1><?php echo $data['data']?? null;?></h1>
             <img src="img/chart_surveyor.svg" alt="Total Surveyor">
           </div>
           <div class="box">
             <h6>total banner</h6>
-            <h1><?php echo $data2['data'];?></h1>
+            <h1><?php echo $data2['data']?? null;?></h1>
             <img src="img/chart_banner.svg" alt="Total Banner">
           </div>
         </div>
