@@ -25,24 +25,31 @@ body {
 
 .icon-add-white {
   background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-add-white.png);
+  background-size: cover;
 }
 .icon-home {
   background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-home.png);
+  background-size: cover;
 }
 .icon-dashboard {
   background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-dashboard.png);
+  background-size: cover;
 }
 .icon-invoices {
   background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-invoices.png);
+  background-size: cover;
 }
 .icon-invoices-white {
   background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-invoices-white.png);
+  background-size: cover;
 }
 .icon-customers {
   background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-customers.png);
+  background-size: cover;
 }
 .icon-coordinator {
   background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-coordinator.png);
+  background-size: cover;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
