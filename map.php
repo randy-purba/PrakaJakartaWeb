@@ -1,10 +1,5 @@
 <?php
 
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-  session_start();
-  // echo 'kun '.$_GET;
   if(!isset($_GET["wilayah"]) && !isset($_GET["kabupaten"]) && !isset($_GET["dapil"]) && !isset($_POST["mapKoordinatorId"]) && !isset($_GET["surveyorId"])){
     $_SESSION['wilayah']=null;
     $_SESSION['kabupaten'] = null;
@@ -179,70 +174,70 @@
           </div>
           <ul class="list-surveyor">
               <?php
-                if(isset($_POST['submitFilter'])){
-                  // echo 'kunam berapi '.$_POST['filterKoordinator'];
-                  $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'searchbycoordinator' => $_SESSION["mapKoordinatorId"], 'page' => $_SESSION["page"]);
-                  if(isset($_SESSION['wilayah']) || $_SESSION['wilayah']!=null){
-                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbywilayah' => $_SESSION['wilayah'], 'page' => $_SESSION["page"]);
-                  }
-                  if(isset($_SESSION['kabupaten']) || $_SESSION['kabupaten']!=null){
-                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbykabupaten' => $_SESSION['kabupaten'], 'page' => $_SESSION["page"]);
-                  }
-                  if(isset($_SESSION['dapil']) || $_SESSION['dapil']!=null){
-                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbydapil' => $_SESSION['dapil'], 'page' => $_SESSION["page"]);
-                  }
-                  if(isset($_SESSION['mapKoordinatorId']) || $_SESSION['mapKoordinatorId']!=null){
-                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_SESSION['mapKoordinatorId'], 'page' => $_SESSION["page"]);
-                  }
-                  if(isset($_POST['filterKoordinator']) || $_POST['filterKoordinator']!=null){
-                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_POST['filterKoordinator'], 'page' => $_SESSION["page"]);
-                  }
-                  // var_dump($data);
-                  $options = array(
-                      'http' => array(
-                          'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
-                          'method'  => 'GET',
-                      )
-                  );
-                  $contentData=http_build_query($data);
-                  $context  = stream_context_create($options);
-                  $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
-                  // var_dump($result);
-                  if ($result === FALSE) {
-                    echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
-                  }else{
-                    $data = json_decode($result);
-                    for($i = 0; $i < sizeof($data->data->rows); $i++){
-                      echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
-                      echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
-                      echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
-                      echo '</a>';
-                    }
-                  }
-                }else{
-                  $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'page' => $_SESSION["page"]);
-                  $options = array(
-                      'http' => array(
-                          'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
-                          'method'  => 'GET',
-                      )
-                  );
-                  $contentData=http_build_query($data);
-                  $context  = stream_context_create($options);
-                  $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
-                  // var_dump($result);
-                  if ($result === FALSE) {
-                    echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
-                  }else{
-                    $data = json_decode($result);
-                    for($i = 0; $i < sizeof($data->data->rows); $i++){
-                      echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
-                      echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
-                      echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
-                      echo '</a>';
-                    }
-                  }
-                }
+                // if(isset($_POST['submitFilter'])){
+                //   // echo 'kunam berapi '.$_POST['filterKoordinator'];
+                //   $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'searchbycoordinator' => $_SESSION["mapKoordinatorId"], 'page' => $_SESSION["page"]);
+                //   if(isset($_SESSION['wilayah']) || $_SESSION['wilayah']!=null){
+                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbywilayah' => $_SESSION['wilayah'], 'page' => $_SESSION["page"]);
+                //   }
+                //   if(isset($_SESSION['kabupaten']) || $_SESSION['kabupaten']!=null){
+                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbykabupaten' => $_SESSION['kabupaten'], 'page' => $_SESSION["page"]);
+                //   }
+                //   if(isset($_SESSION['dapil']) || $_SESSION['dapil']!=null){
+                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbydapil' => $_SESSION['dapil'], 'page' => $_SESSION["page"]);
+                //   }
+                //   if(isset($_SESSION['mapKoordinatorId']) || $_SESSION['mapKoordinatorId']!=null){
+                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_SESSION['mapKoordinatorId'], 'page' => $_SESSION["page"]);
+                //   }
+                //   if(isset($_POST['filterKoordinator']) || $_POST['filterKoordinator']!=null){
+                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_POST['filterKoordinator'], 'page' => $_SESSION["page"]);
+                //   }
+                //   // var_dump($data);
+                //   $options = array(
+                //       'http' => array(
+                //           'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
+                //           'method'  => 'GET',
+                //       )
+                //   );
+                //   $contentData=http_build_query($data);
+                //   $context  = stream_context_create($options);
+                //   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
+                //   // var_dump($result);
+                //   if ($result === FALSE) {
+                //     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
+                //   }else{
+                //     $data = json_decode($result);
+                //     for($i = 0; $i < sizeof($data->data->rows); $i++){
+                //       echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
+                //       echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
+                //       echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
+                //       echo '</a>';
+                //     }
+                //   }
+                // }else{
+                //   $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'page' => $_SESSION["page"]);
+                //   $options = array(
+                //       'http' => array(
+                //           'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
+                //           'method'  => 'GET',
+                //       )
+                //   );
+                //   $contentData=http_build_query($data);
+                //   $context  = stream_context_create($options);
+                //   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
+                //   // var_dump($result);
+                //   if ($result === FALSE) {
+                //     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
+                //   }else{
+                //     $data = json_decode($result);
+                //     for($i = 0; $i < sizeof($data->data->rows); $i++){
+                //       echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
+                //       echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
+                //       echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
+                //       echo '</a>';
+                //     }
+                //   }
+                // }
               ?>
           </ul>
           <ul class="pagination">
