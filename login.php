@@ -1,10 +1,5 @@
 <?php
   session_start();
-
-  if (!isset($_SESSION['logged_in'])) {
-    header("Location: login.php");
-    exit();
-  }
   
   function login() {
     $url = 'https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/login';
@@ -21,7 +16,7 @@
     $result = @file_get_contents($url, false, $context);
     if ($result === FALSE) {
       echo "<script type='text/javascript'>alert('Login failed!')</script>";
-    }else{
+    } else {
       $data = json_decode($result);
       $_SESSION["username"]= $data->data->username;
       $_SESSION["name"]= $data->data->name;

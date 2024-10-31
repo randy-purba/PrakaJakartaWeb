@@ -1,9 +1,9 @@
 <?php
   session_start();
 
-  if($_SESSION["username"] == null){
-    header('Location: login.php');
-  }
+  // if($_SESSION["username"] == null){
+  //   header('Location: login.php');
+  // }
   $url = "https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/getAllUser";
   $data = json_decode(file_get_contents($url), true);
   $url2 = "https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/reports/getAllReport";

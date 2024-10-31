@@ -24,25 +24,25 @@ body {
 }
 
 .icon-add-white {
-  background-image: url(https://storage.googleapis.com/bucketdbayo/jqtgnh22);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-add-white.png);
 }
 .icon-home {
-  background-image: url(https://storage.googleapis.com/bucketdbayo/jqtgnh26);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-home.png);
 }
 .icon-dashboard {
-  background-image: url(https://storage.googleapis.com/bucketdbayo/jqtgnh25);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-dashboard.png);
 }
 .icon-invoices {
-  background-image: url(https://storage.googleapis.com/bucketdbayo/jqtgnh27);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-invoices.png);
 }
 .icon-invoices-white {
-  background-image: url(https://storage.googleapis.com/bucketdbayo/jqtgnh28);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-invoices-white.png);
 }
 .icon-customers {
-  background-image: url(https://storage.googleapis.com/bucketdbayo/jqtgnh24);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-customers.png);
 }
 .icon-coordinator {
-  background-image: url(https://storage.googleapis.com/bucketdbayo/jqtgnh23);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/icon-coordinator.png);
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -63,7 +63,7 @@ body {
   height: 100%;
   width: 50%;
   float: left;
-  background-image: url(https://storage.googleapis.com/bucketdbayo/ayjo.jpeg);
+  background-image: url(https://storage.googleapis.com/bucket-praka-jakarta/icon/ayjo.jpeg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

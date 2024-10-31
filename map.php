@@ -1,4 +1,8 @@
 <?php
+
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
   session_start();
   // echo 'kun '.$_GET;
   if(!isset($_GET["wilayah"]) && !isset($_GET["kabupaten"]) && !isset($_GET["dapil"]) && !isset($_POST["mapKoordinatorId"]) && !isset($_GET["surveyorId"])){
