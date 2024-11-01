@@ -117,7 +117,7 @@
     <div class="sidebar">
       <div class="header"><h4>Praka Jakarta</h4></div>
       <div class="menu">
-        <a class="" href="index.php"><i class="icons icon-home"></i>dashboard</a>
+        <a class="" href="dashboard.php"><i class="icons icon-home"></i>dashboard</a>
         <a class="" href="map.php"><i class="icons icon-dashboard"></i>map</a>
         <a class="active" href="report.php"><i class="icons icon-invoices"></i>rekap laporan</a>
         <a class="" href="koordinator.php"><i class="icons icon-coordinator"></i>koordinator</a>

@@ -26,7 +26,7 @@
       $_SESSION["Authorization"]= $rtn[2];
       // var_dump($http_response_header);
       // echo 'kunam'.$http_response_header[4];
-      header('Location: index.php');
+      header('Location: dashboard.php');
     }
   }
 

@@ -1,13 +1,31 @@
 <?php
 
 switch ($_SERVER['REQUEST_URI']) {
+    case '/':
+        include 'dashboard.php';
+        break;
+    case '/login.php':
+        include 'login.php';
+        break;
     case '/report.php':
         include 'report.php';
         break;
     case '/map.php':
         include 'map.php';
         break;
-    case '/':
+    case '/koordinator.php':
+        include 'koordinator.php';
+        break;
+    case '/surveyor.php':
+        include 'surveyor.php';
+        break;
+    case '/mapnew.php':
+        include 'mapnew.php';
+        break;
+    case '/reportnew.php':
+        include 'reportnew.php';
+        break;
+    case '/surveyornew.php':
         include 'surveyornew.php';
         break;
     default:

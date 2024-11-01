@@ -28,7 +28,7 @@
     <div class="sidebar">
       <div class="header"><h4>Praka Jakarta</h4></div>
       <div class="menu">
-        <a class="" href="index.php"><i class="icons icon-home"></i>dashboard</a>
+        <a class="" href="dashboard.php"><i class="icons icon-home"></i>dashboard</a>
         <a class="" href="map.php"><i class="icons icon-dashboard"></i>map</a>
         <a class="" href="report.php"><i class="icons icon-invoices"></i>rekap laporan</a>
         <a class="" href="koordinator.php"><i class="icons icon-coordinator"></i>koordinator</a>
@@ -293,7 +293,7 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVEVkIpcTSn28KbiXazANnPR9unaCau0M"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb7pxkEbMAiy2RhF4iH98WJ4Zxqs-qWwM"></script>
     <script src="js/customnew.js"></script>
     <!-- <script src="js/Api.js"></script> -->
   </body>

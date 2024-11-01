@@ -72,7 +72,7 @@
     <div class="sidebar">
       <div class="header"><h4>Praka Jakarta</h4></div>
       <div class="menu">
-        <a class="" href="index.php"><i class="icons icon-home"></i>dashboard</a>
+        <a class="" href="dashboard.php"><i class="icons icon-home"></i>dashboard</a>
         <a class="active" href="map.php"><i class="icons icon-dashboard"></i>map</a>
         <a class="" href="report.php"><i class="icons icon-invoices"></i>rekap laporan</a>
         <a class="" href="koordinator.php"><i class="icons icon-coordinator"></i>koordinator</a>
@@ -174,70 +174,70 @@
           </div>
           <ul class="list-surveyor">
               <?php
-                // if(isset($_POST['submitFilter'])){
-                //   // echo 'kunam berapi '.$_POST['filterKoordinator'];
-                //   $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'searchbycoordinator' => $_SESSION["mapKoordinatorId"], 'page' => $_SESSION["page"]);
-                //   if(isset($_SESSION['wilayah']) || $_SESSION['wilayah']!=null){
-                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbywilayah' => $_SESSION['wilayah'], 'page' => $_SESSION["page"]);
-                //   }
-                //   if(isset($_SESSION['kabupaten']) || $_SESSION['kabupaten']!=null){
-                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbykabupaten' => $_SESSION['kabupaten'], 'page' => $_SESSION["page"]);
-                //   }
-                //   if(isset($_SESSION['dapil']) || $_SESSION['dapil']!=null){
-                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbydapil' => $_SESSION['dapil'], 'page' => $_SESSION["page"]);
-                //   }
-                //   if(isset($_SESSION['mapKoordinatorId']) || $_SESSION['mapKoordinatorId']!=null){
-                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_SESSION['mapKoordinatorId'], 'page' => $_SESSION["page"]);
-                //   }
-                //   if(isset($_POST['filterKoordinator']) || $_POST['filterKoordinator']!=null){
-                //     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_POST['filterKoordinator'], 'page' => $_SESSION["page"]);
-                //   }
-                //   // var_dump($data);
-                //   $options = array(
-                //       'http' => array(
-                //           'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
-                //           'method'  => 'GET',
-                //       )
-                //   );
-                //   $contentData=http_build_query($data);
-                //   $context  = stream_context_create($options);
-                //   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
-                //   // var_dump($result);
-                //   if ($result === FALSE) {
-                //     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
-                //   }else{
-                //     $data = json_decode($result);
-                //     for($i = 0; $i < sizeof($data->data->rows); $i++){
-                //       echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
-                //       echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
-                //       echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
-                //       echo '</a>';
-                //     }
-                //   }
-                // }else{
-                //   $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'page' => $_SESSION["page"]);
-                //   $options = array(
-                //       'http' => array(
-                //           'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
-                //           'method'  => 'GET',
-                //       )
-                //   );
-                //   $contentData=http_build_query($data);
-                //   $context  = stream_context_create($options);
-                //   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
-                //   // var_dump($result);
-                //   if ($result === FALSE) {
-                //     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
-                //   }else{
-                //     $data = json_decode($result);
-                //     for($i = 0; $i < sizeof($data->data->rows); $i++){
-                //       echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
-                //       echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
-                //       echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
-                //       echo '</a>';
-                //     }
-                //   }
-                // }
+                if(isset($_POST['submitFilter'])){
+                  // echo 'kunam berapi '.$_POST['filterKoordinator'];
+                  $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'searchbycoordinator' => $_SESSION["mapKoordinatorId"], 'page' => $_SESSION["page"]);
+                  if(isset($_SESSION['wilayah']) || $_SESSION['wilayah']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbywilayah' => $_SESSION['wilayah'], 'page' => $_SESSION["page"]);
+                  }
+                  if(isset($_SESSION['kabupaten']) || $_SESSION['kabupaten']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbykabupaten' => $_SESSION['kabupaten'], 'page' => $_SESSION["page"]);
+                  }
+                  if(isset($_SESSION['dapil']) || $_SESSION['dapil']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbydapil' => $_SESSION['dapil'], 'page' => $_SESSION["page"]);
+                  }
+                  if(isset($_SESSION['mapKoordinatorId']) || $_SESSION['mapKoordinatorId']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_SESSION['mapKoordinatorId'], 'page' => $_SESSION["page"]);
+                  }
+                  if(isset($_POST['filterKoordinator']) || $_POST['filterKoordinator']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_POST['filterKoordinator'], 'page' => $_SESSION["page"]);
+                  }
+                  // var_dump($data);
+                  $options = array(
+                      'http' => array(
+                          'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
+                          'method'  => 'GET',
+                      )
+                  );
+                  $contentData=http_build_query($data);
+                  $context  = stream_context_create($options);
+                  $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
+                  // var_dump($result);
+                  if ($result === FALSE) {
+                    echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
+                  }else{
+                    $data = json_decode($result);
+                    for($i = 0; $i < sizeof($data->data->rows); $i++){
+                      echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
+                      echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
+                      echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
+                      echo '</a>';
+                    }
+                  }
+                }else{
+                  $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'page' => $_SESSION["page"]);
+                  $options = array(
+                      'http' => array(
+                          'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
+                          'method'  => 'GET',
+                      )
+                  );
+                  $contentData=http_build_query($data);
+                  $context  = stream_context_create($options);
+                  $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
+                  // var_dump($result);
+                  if ($result === FALSE) {
+                    echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
+                  }else{
+                    $data = json_decode($result);
+                    for($i = 0; $i < sizeof($data->data->rows); $i++){
+                      echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
+                      echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
+                      echo '<h6>'.$data->data->rows[$i]->totalMarker.' Marker</h6>';
+                      echo '</a>';
+                    }
+                  }
+                }
               ?>
           </ul>
           <ul class="pagination">
@@ -294,7 +294,7 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVEVkIpcTSn28KbiXazANnPR9unaCau0M"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb7pxkEbMAiy2RhF4iH98WJ4Zxqs-qWwM"></script>
     <script src="js/custom.js"></script>
     <script>
       

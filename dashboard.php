@@ -1,9 +1,9 @@
 <?php
   session_start();
 
-  // if($_SESSION["username"] == null){
-  //   header('Location: login.php');
-  // }
+  if($_SESSION["username"] == null){
+    header('Location: login.php');
+  }
   $url = "https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/getAllUser";
   $data = json_decode(file_get_contents($url), true);
   $url2 = "https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/reports/getAllReport";
@@ -28,8 +28,8 @@
     <div class="sidebar">
       <div class="header"><h4>Praka Jakarta</h4></div>
       <div class="menu">
-        <a class="active" href="index.php"><i class="icons icon-home"></i>dashboard</a>
-        <a class="" href="/map.php"><i class="icons icon-dashboard"></i>map</a>
+        <a class="active" href="dashboard.php"><i class="icons icon-home"></i>dashboard</a>
+        <a class="" href="map.php"><i class="icons icon-dashboard"></i>map</a>
         <a class="" href="report.php"><i class="icons icon-invoices"></i>rekap laporan</a>
         <a class="" href="koordinator.php"><i class="icons icon-coordinator"></i>koordinator</a>
         <a class="" href="surveyor.php"><i class="icons icon-customers"></i>surveyor</a>
