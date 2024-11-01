@@ -28,6 +28,9 @@ switch ($_SERVER['REQUEST_URI']) {
     case '/surveyornew.php':
         include 'surveyornew.php';
         break;
+    case '/dashboard.php':
+        include 'dashboard.php';
+        break;
     default:
         include '404.php';
         break;
