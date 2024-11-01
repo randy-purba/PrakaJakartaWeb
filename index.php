@@ -31,6 +31,12 @@ switch ($_SERVER['REQUEST_URI']) {
     case '/dashboard.php':
         include 'dashboard.php';
         break;
+    case '/action.php':
+        include 'action.php';
+        break;
+    case '/export.php':
+        include 'export.php';
+        break;
     default:
         include '404.php';
         break;
