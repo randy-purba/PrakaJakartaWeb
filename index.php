@@ -1,9 +1,9 @@
 <?php
 
-    echo $_SERVER['REQUEST_URI'];
+    // echo $_SERVER['REQUEST_URI'];
     $requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-    echo "requestPath :" +   $requestPath;
+    // echo "requestPath :".$requestPath;
 
     switch ($requestPath) {
         case '/':
