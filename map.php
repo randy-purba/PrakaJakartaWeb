@@ -225,7 +225,7 @@
                   $contentData=http_build_query($data);
                   $context  = stream_context_create($options);
                   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
-                  // var_dump($result);
+                  var_dump($result);
                   if ($result === FALSE) {
                     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
                   }else{
