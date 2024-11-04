@@ -42,6 +42,33 @@
         case '/action.php':
             include 'action.php';
             break;
+        case '/coordinatorId.php':
+            include 'coordinatorId.php';
+            break;
+        case '/dapilId.php':
+            include 'dapilId.php';
+            break;
+        case '/export.php':
+            include 'export.php';
+            break;
+        case '/kabupatenId.php':
+            include 'kabupatenId.php';
+            break;
+        case '/koordinatorId.php':
+            include 'koordinatorId.php';
+            break;
+        case '/sess.php':
+            include 'sess.php';
+            break;
+        case '/surveyorId.php':
+            include 'surveyorId.php';
+            break;
+        case '/surveyorNewId.php':
+            include 'surveyorNewId.php';
+            break;
+        case '/wilayahId.php':
+            include 'wilayahId.php';
+            break;
         default:
             include '404.php';
             break;

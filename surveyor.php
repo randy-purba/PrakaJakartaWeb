@@ -3,7 +3,6 @@
   if(!isset($_SESSION["pageSurveyor"])){
     $_SESSION["pageSurveyor"]=1;
   }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,9 +55,10 @@
 
                 // $result = @file_get_contents($url.'?'.$contentData, false, $context);
                 $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/?'.$contentData, false, $context);
+              
                 // var_dump($result);
                 if ($result === FALSE) {
-                  echo "<script type='text/javascript'>alert('Session Anda Habis!'); </script>";
+                  echo "<script type='text/javascript'>alert('Session Anda Habis!' ); </script>";
                 }else{
                   $data = json_decode($result);
                   for($i = 0; $i < sizeof($data->data->rows); $i++){

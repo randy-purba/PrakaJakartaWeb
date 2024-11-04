@@ -1,4 +1,5 @@
 <?php
+  session_start();
 
   if(!isset($_GET["wilayah"]) && !isset($_GET["kabupaten"]) && !isset($_GET["dapil"]) && !isset($_POST["mapKoordinatorId"]) && !isset($_GET["surveyorId"])){
     $_SESSION['wilayah']=null;
@@ -107,7 +108,7 @@
                 );
                 $context  = stream_context_create($options);
                 $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/wilayah', false, $context);
-                var_dump($result);
+                // print_r($result);
                 if ($result === FALSE) {
                   echo "<script type='text/javascript'>alert('Session Anda Habis!'); </script>";
                 }else{
@@ -225,7 +226,7 @@
                   $contentData=http_build_query($data);
                   $context  = stream_context_create($options);
                   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
-                  var_dump($result);
+                  // var_dump($result);
                   if ($result === FALSE) {
                     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
                   }else{
