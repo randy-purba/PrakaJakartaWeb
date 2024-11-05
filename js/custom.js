@@ -48,7 +48,10 @@ $(function () {
       for (i = 0; i < locations.length; i++) {
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-          icon: 'https://storage.googleapis.com/bucketdbayo/marker%20dashboard%20map_40px.png',
+          icon: {
+            url: 'https://storage.googleapis.com/bucket-praka-jakarta/m34kmra4',
+            scaledSize: new google.maps.Size(30, 30)
+          },
           map: map
         });
 
