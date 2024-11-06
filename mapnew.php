@@ -33,9 +33,9 @@
         <a class="" href="report.php"><i class="icons icon-invoices"></i>rekap laporan</a>
         <a class="" href="koordinator.php"><i class="icons icon-coordinator"></i>koordinator</a>
         <a class="" href="surveyor.php"><i class="icons icon-customers"></i>surveyor</a>
-        <a class="active" href="mapnew.php"><i class="icons icon-dashboard"></i>map baru</a>
+        <!-- <a class="active" href="mapnew.php"><i class="icons icon-dashboard"></i>map baru</a>
         <a class="" href="reportnew.php"><i class="icons icon-invoices"></i>rekap laporan baru</a>
-        <a class="" href="surveyornew.php"><i class="icons icon-customers"></i>surveyor baru</a>
+        <a class="" href="surveyornew.php"><i class="icons icon-customers"></i>surveyor baru</a> -->
       </div>
     </div>
     <div class="right-content maps">

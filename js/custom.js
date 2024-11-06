@@ -4,7 +4,7 @@ $(function () {
 
 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 18,
+      zoom: 11.8,
       center: new google.maps.LatLng(-6.16100, 106.81979),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
@@ -55,6 +55,9 @@ $(function () {
           map: map
         });
 
+        var firstAnswer = locations[i].answer1 == 1 ? "Ya" : "Tidak";
+        var secondAnswer = locations[i].answer2 == 1 ? "Ya" : "Tidak";
+
         contentString[i] = '<div class="info-window">' +
           '<div class="photo"><img src="' + locations[i].images + '" height="100%" width="100%"></div>' +
           '<div class="info-content">' +
@@ -64,10 +67,10 @@ $(function () {
           '<div class="full-name">' + locations[i].name + '</div>' +
           '<label for="address">Alamat</label>' +
           '<div class="address">' + locations[i].address1 + '</div>' +
-          '<label for="answer1">Jawaban 1</label>' +
-          '<div class="answer-1">' + locations[i].answer1 + '</div>' +
-          '<label for="answer2">Jawaban 2</label>' +
-          '<div class="answer-2">' + locations[i].answer2 + '</div>' +
+          '<label for="answer1">Mengenal Pramono Anung dan Rano Karno ?</label>' +
+          '<div class="answer-1">' + firstAnswer + '</div>' +
+          '<label for="answer2">Ingin memilih Pramono Anung dan Rano Karno ? </label>' +
+          '<div class="answer-2">' + secondAnswer + '</div>' +
           '<label for="surveyorName">Nama Surveyor</label>' +
           '<div class="address">' + locations[i].AppUserName + '</div>' +
           '<label for="coordinatorName">Nama Koordinator</label>' +
