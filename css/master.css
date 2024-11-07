@@ -130,6 +130,8 @@ button:focus {
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
+  border: 2px solid #d43e17 !important;
+  background-color: #d43e17 !important;
 }
 .button-group button.login {
   border: 2px solid #43425D;
@@ -155,7 +157,7 @@ button:focus {
   height: 100%;
   width: 20%;
   float: left;
-  background-color: #244D5B;
+  background-color: #d75a21;
   position: fixed;
 }
 .sidebar .header {
@@ -198,11 +200,11 @@ button:focus {
   text-decoration: none!important;
 }
 .sidebar .menu a.active {
-  background-color: #3C3B54;
+  background-color: #231f20;
   border-left: 4px solid #A3A0FB;
 }
 .sidebar .menu a:hover {
-  background-color: #3C3B54;
+  background-color: #231f20;
   color: #FFFFFF!important;
   text-decoration: none!important;
 }

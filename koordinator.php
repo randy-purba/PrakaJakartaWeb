@@ -107,7 +107,7 @@
                 // $result = @file_get_contents($url.'?'.$contentData, false, $context);
                 $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/?'.$contentData, false, $context);
 
-                error_log('$contentData : ' + $contentData);
+                // error_log('$contentData : ' + $contentData);
                 // var_dump($result);
                 if ($result === FALSE) {
                   echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
