@@ -1,13 +1,13 @@
 <?php
   session_start();
 
-  if(!isset($_GET["wilayah"]) && !isset($_GET["kabupaten"]) && !isset($_GET["dapil"]) && !isset($_POST["mapKoordinatorId"]) && !isset($_GET["surveyorId"])){
-    $_SESSION['wilayah']=null;
-    $_SESSION['kabupaten'] = null;
-    $_SESSION['dapil'] = null;
-    $_SESSION['mapKoordinatorId'] = null;
-    $_SESSION['SurveyorId']=null;
-  }
+  // if(!isset($_GET["wilayah"]) && !isset($_GET["kabupaten"]) && !isset($_GET["dapil"]) && !isset($_GET["mapKoordinatorId"]) && !isset($_GET["surveyorId"])){
+  //   $_SESSION['wilayah']=null;
+  //   $_SESSION['kabupaten'] = null;
+  //   $_SESSION['dapil'] = null;
+  //   $_SESSION['mapKoordinatorId'] = null;
+  //   $_SESSION['SurveyorId']=null;
+  // }
   
   if(!isset($_SESSION["page"])){
     $_SESSION["page"]=1;
@@ -15,6 +15,8 @@
 
   if(isset($_GET["surveyorId"])){
     $_SESSION['SurveyorId']=$_GET["surveyorId"];
+  } else {
+    $_SESSION['SurveyorId']=null;
   }
 
   if(isset($_GET["wilayah"])){
@@ -22,17 +24,24 @@
     $_SESSION['kabupaten'] = null;
     $_SESSION['dapil'] = null;
     $_SESSION['mapKoordinatorId'] = null;
+    $_SESSION['SurveyorId']=null;
   }
 
   if(isset($_GET["kabupaten"])){
     $_SESSION['kabupaten']=$_GET["kabupaten"];
     $_SESSION['dapil'] = null;
     $_SESSION['mapKoordinatorId'] = null;
+    $_SESSION['SurveyorId']=null;
   }
 
   if(isset($_GET["dapil"])){
     $_SESSION['dapil']=$_GET["dapil"];
     $_SESSION['mapKoordinatorId'] = null;
+    $_SESSION['SurveyorId']=null;
+  }
+  if(isset($_GET["mapKoordinatorId"])){
+    $_SESSION['mapKoordinatorId']=$_GET["mapKoordinatorId"];
+    $_SESSION['SurveyorId']=null;
   }
 
   if(isset($_POST["filterKoordinator"])){
@@ -98,7 +107,7 @@
           <div class="filter">
             <div class="filter-content">
               <a id="closeTab" href="#"><i class="material-icons">close</i></a>
-              <form action="#" method="post">
+              <form action="#" method="POST">
               <select name="filterWilayah" id="filterWilayah" onChange="myFunction1();">
               <?php
                 $options = array(
@@ -108,7 +117,7 @@
                 );
                 $context  = stream_context_create($options);
                 $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/wilayah', false, $context);
-                // print_r($result);
+                echo "wilayah :" . $_COOKIE['wilayah'];
                 if ($result === FALSE) {
                   echo "<script type='text/javascript'>alert('Session Anda Habis!'); </script>";
                 }else{
@@ -162,6 +171,7 @@
               ?>
               </select>
               <button type="submit" name="submitFilter">filter</button>
+              <button class="clear-filter-map-button" type="submit" name="clearFilterMap">Clear Filter</button>
               </form>
             </div>
             <div class="filter-dismiss"></div>
@@ -177,6 +187,7 @@
               <?php
                 if(isset($_POST['submitFilter'])){
                   // echo 'kunam berapi '.$_POST['filterKoordinator'];
+                  $_SESSION["page"] = 1;
                   $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'searchbycoordinator' => $_SESSION["mapKoordinatorId"], 'page' => $_SESSION["page"]);
                   if(isset($_SESSION['wilayah']) || $_SESSION['wilayah']!=null){
                     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbywilayah' => $_SESSION['wilayah'], 'page' => $_SESSION["page"]);
@@ -188,12 +199,33 @@
                     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbydapil' => $_SESSION['dapil'], 'page' => $_SESSION["page"]);
                   }
                   if(isset($_SESSION['mapKoordinatorId']) || $_SESSION['mapKoordinatorId']!=null){
+                    // $filterbycoordinator =  $_SESSION['mapKoordinatorId'];
                     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_SESSION['mapKoordinatorId'], 'page' => $_SESSION["page"]);
                   }
                   if(isset($_POST['filterKoordinator']) || $_POST['filterKoordinator']!=null){
                     $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_POST['filterKoordinator'], 'page' => $_SESSION["page"]);
                   }
-                  // var_dump($data);
+
+                  if (isset($_POST['filterWilayah']) && $_POST['filterWilayah']!=null) {
+                    $customFilter = '&wilayah='.$_POST['filterWilayah'];
+                  }
+
+
+                  if (isset($_POST['filterKabupaten']) && $_POST['filterKabupaten']!=null) {
+                    $customFilter = '&kabupaten='.$_POST['filterKabupaten'];
+                  }
+
+
+                  if (isset($_POST['filterDapil']) && $_POST['filterDapil']!=null) {
+                    $customFilter = '&dapil='.$_POST['filterDapil'];
+                  }
+
+
+                  if (isset($_POST['filterKoordinator']) && $_POST['filterKoordinator']!=null) {
+                    $customFilter = '&mapKoordinatorId='.$_POST['filterKoordinator'];
+                  }
+
+                  // var_dump($_POST);
                   $options = array(
                       'http' => array(
                           'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
@@ -203,11 +235,15 @@
                   $contentData=http_build_query($data);
                   $context  = stream_context_create($options);
                   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
+                  // var_dump($contentData);
+
                   // var_dump($result);
                   if ($result === FALSE) {
                     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
                   }else{
                     $data = json_decode($result);
+                    $pageSize = $data->data->count;
+                    // var_dump('pageSize : ' . $pageSize);
                     for($i = 0; $i < sizeof($data->data->rows); $i++){
                       echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
                       echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
@@ -216,7 +252,49 @@
                     }
                   }
                 }else{
+
+
+                  if (isset($_POST['clearFilterMap'])){
+                    
+                    $_SESSION["page"]=1;
+                    $_SESSION["wilayah"]=null;
+                    $_SESSION["kabupaten"]=null;
+                    $_SESSION["dapil"]=null;
+                    $_SESSION["mapKoordinatorId"]=null;
+                    
+                  } else {
+                    if (isset($_SESSION['wilayah'])) {
+                      $customFilter = '&wilayah='.$_SESSION['wilayah'];
+                    }
+
+                    if (isset($_SESSION['kabupaten'])) {
+                      $customFilter = '&kabupaten='.$_SESSION['kabupaten'];
+                    }
+
+                    if (isset($_SESSION['dapil'])) {
+                      $customFilter = '&dapil='.$_SESSION['dapil'];
+                    }
+
+                    if (isset($_SESSION['mapKoordinatorId'])) {
+                      $customFilter = '&mapKoordinatorId='.$_SESSION['mapKoordinatorId'];
+                    }
+                  }
+                  
+
                   $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'page' => $_SESSION["page"]);
+                  if(isset($_SESSION['wilayah']) || $_SESSION['wilayah']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbywilayah' => $_SESSION['wilayah'], 'page' => $_SESSION["page"]);
+                  }
+                  if(isset($_SESSION['kabupaten']) || $_SESSION['kabupaten']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbykabupaten' => $_SESSION['kabupaten'], 'page' => $_SESSION["page"]);
+                  }
+                  if(isset($_SESSION['dapil']) || $_SESSION['dapil']!=null){
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbydapil' => $_SESSION['dapil'], 'page' => $_SESSION["page"]);
+                  }
+                  if(isset($_SESSION['mapKoordinatorId']) || $_SESSION['mapKoordinatorId']!=null){
+                    // $filterbycoordinator =  $_SESSION['mapKoordinatorId'];
+                    $data = array('limit' => '5', 'sortby' => 'id', 'order' => 'DESC', 'filterbycoordinator' => $_SESSION['mapKoordinatorId'], 'page' => $_SESSION["page"]);
+                  }
                   $options = array(
                       'http' => array(
                           'header'  => "Content-type: application/x-www-form-urlencoded\r\nAuthorization: Bearer ".$_SESSION["Authorization"],
@@ -226,11 +304,15 @@
                   $contentData=http_build_query($data);
                   $context  = stream_context_create($options);
                   $result = file_get_contents('https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/appUsers/?'.$contentData, false, $context);
+              
                   // var_dump($result);
+
                   if ($result === FALSE) {
                     echo "<script type='text/javascript'>alert('Session Anda Habis!'); window.location = 'login.php';</script>";
                   }else{
                     $data = json_decode($result);
+                    $pageSize = $data->data->count;
+                    // var_dump('pageSize : ' . $pageSize);
                     for($i = 0; $i < sizeof($data->data->rows); $i++){
                       echo '<a href="map.php?surveyorId='.$data->data->rows[$i]->id.'">';
                       echo '<h6>'.$data->data->rows[$i]->name.'</h6>';
@@ -239,40 +321,37 @@
                     }
                   }
                 }
+
               ?>
           </ul>
           <ul class="pagination">
             <li class="page-item">
               <?php
-                echo '<a class="page-link" href="action.php?page=1" aria-label="Previous">'
+                echo '<a class="page-link" href="action.php?page=1'.$customFilter.'" aria-label="Previous">'
               ?>
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">Previous</span>
               </a>
             </li>
             <?php
-              $pages=$_SESSION["page"];
-              if($pages+5 > $data->data->page){
-                $pages=$data->data->page - 4;
+              $pages = $_SESSION["page"];
+              $pageDataResult = $data->data->page;
+              
+              // Determine the starting page for pagination
+              $pages = max(1, min($pages, $pageDataResult - 4)); 
+              
+              // Calculate the end page for the pagination range (either 5 pages or up to the max available)
+              $maxPagination = min($pageDataResult, $pages + 4);
+              
+              // Render pagination links
+              for ($i = $pages; $i <= $maxPagination; $i++) {
+                  $status = $i == $_SESSION["page"] ? 'active' : '';
+                  echo '<li class="page-item ' . $status . '"><a class="page-link" href="action.php?page=' . $i . $customFilter . '">' . $i . '</a></li>';
               }
-              // if($pages < 1){
-              //   $pages = 1;
-              // }
-              // if($data->data->page < 5){
-              //   for($i = $pages; $i <= $data->data->page; $i++){
-              //     $status =  $i==$_SESSION["page"] ? 'active' : '';
-              //     echo '<li class="page-item '. $status .'"><a class="page-link" href="action.php?page='.$i.'">'. $i .'</a></li>';
-              //   }
-              // }else{
-                for($i = $pages; $i <= $pages+4; $i++){
-                  $status =  $i==$_SESSION["page"] ? 'active' : '';
-                  echo '<li class="page-item '. $status .'"><a class="page-link" href="action.php?page='.$i.'">'. $i .'</a></li>';
-                }
-              // }
             ?>
             <li class="page-item">
               <?php
-                echo '<a class="page-link" href="action.php?page='.$data->data->page.'" aria-label="Next">'
+                echo '<a class="page-link" href="action.php?page='.$data->data->page.$customFilter.'" aria-label="Next">'
               ?>
                 <span aria-hidden="true">&raquo;</span>
                 <span class="sr-only">Next</span>
@@ -298,7 +377,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb7pxkEbMAiy2RhF4iH98WJ4Zxqs-qWwM"></script>
     <script src="js/custom.js"></script>
     <script>
-      
+      // $('#filterWilayah').val($_SESSION['wilayah']); // Selects "Banana"
+
     </script>
     <!-- <script src="js/Api.js"></script> -->
   </body>

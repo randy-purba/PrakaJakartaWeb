@@ -95,6 +95,8 @@ $(function () {
 
 function myFunction1() {
   var x = document.getElementById("filterWilayah").value;
+
+  // setCookie('wilayah', x, 1); // Set for 1 day
   
   $url = 'https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/kabupaten?filterbywilayah=' + x;
   var optionsAsString = "<option value=''></option>";
@@ -115,6 +117,7 @@ function myFunction1() {
 
 function myFunction2() {
   var x = document.getElementById("filterKabupaten").value;
+  // setCookie('kabupaten', x, 1); // Set for 1 day
   
   $url = 'https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/dapil?filterbykabupaten=' + x;
   var optionsAsString = "<option value=''></option>";
@@ -137,6 +140,11 @@ function myFunction3() {
   var x1 = document.getElementById("filterWilayah").value;
   var x2 = document.getElementById("filterKabupaten").value;
   var x3 = document.getElementById("filterDapil").value;
+
+
+  // setCookie('wilayah', x1, 1); // Set for 1 day
+  // setCookie('kabupaten', x2, 1); // Set for 1 day
+  // setCookie('dapil', x3, 1); // Set for 1 day
   
   var url = 'https://praka-jakarta-2024-229415464489.asia-southeast2.run.app/api/dashboardUsers/?'
   + 'limit=all'
@@ -285,6 +293,11 @@ function myFunctionDeleteSurveyor(){
   });
 }
 
+function setCookie(name, value, days) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+}
+
 const Api = class {
   static headers() {
     var result = Api.getSess();
@@ -409,4 +422,7 @@ const Api = class {
       }
     })
   }
+
+
+
 }

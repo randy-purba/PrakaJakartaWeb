@@ -367,6 +367,10 @@ button:focus {
   float: right;
   height: 24px;
 }
+
+.clear-filter-map-button {
+  background-color: #db4545 !important;
+}
 .right-content .content.maps .floating-surveyor .list-head .action-button a {
   color: #3B86FF;
 }

@@ -10,8 +10,27 @@
     logout();
   }
 
+  function clearFilterMap() {
+    $_SESSION["page"]=1;
+    $_SESSION["wilayah"]=null;
+    $_SESSION["kabupaten"]=null;
+    $_SESSION["dapil"]=1;
+    $_SESSION["mapKoordinatorId"]=null;
+    header('Location: map.php');
+  }
+
+
+  if(isset($_GET["clearFilterMap"])){
+    clearFilterMap();
+  }
+  
+
   function paginationMap(){
     $_SESSION["page"]=$_GET["page"];
+    $_SESSION["wilayah"]=$_GET["wilayah"];
+    $_SESSION["kabupaten"]=$_GET["kabupaten"];
+    $_SESSION["dapil"]=$_GET["dapil"];
+    $_SESSION["mapKoordinatorId"]=$_GET["mapKoordinatorId"];
     header('Location: map.php');
   }
 
